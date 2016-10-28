@@ -1,2 +1,2 @@
-# reptivision
-A Raspberry Pi motion detection pet cam suitable for reptiles
+# I Spy Pi
+A streamlined approach to Raspberry Pi camera motion detection

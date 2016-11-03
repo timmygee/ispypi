@@ -1,0 +1,2 @@
+picamera==1.12
+requests==2.11.1

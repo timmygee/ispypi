@@ -1,19 +1,21 @@
-from .motion_detector import MotionDetector
-from .still_camera import StillCamera
-from .djropbox_uploader import DjropboxUploader
+#!/usr/bin/env python3
 
-if __name__ == '__main__':
-    image_file_path = 'capture.jpg'
-    detector = MotionDetector()
-    camera = StillCamera(default_file_path=image_file_path)
-    uploader = DjropboxUploader()
+from motion_detector import MotionDetector
+from still_camera import StillCamera
+from djropbox_uploader import DjropboxUploader
 
-    print('Checking for motion...')
+IMAGE_FILE_PATH = 'capture.jpg'
 
-    while True:
-        if detector.motion_detected():
-            # Take a high res photo and save it
-            camera.shoot()
-            # Upload the file. You could do anything you want here with the
-            # image file. I upload it to my custom online image repository
-            uploader.upload(image_file_path)
+detector = MotionDetector()
+camera = StillCamera(default_file_path=IMAGE_FILE_PATH)
+uploader = DjropboxUploader()
+
+print('Checking for motion...')
+
+while True:
+    if detector.motion_detected():
+        # Take a high res photo and save it
+        camera.shoot()
+        # Upload the file. You could do anything you want here with the
+        # image file. I upload it to my custom online image repository
+        uploader.upload(IMAGE_FILE_PATH)

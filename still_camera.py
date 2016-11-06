@@ -17,12 +17,12 @@ class StillCamera:
 
     def shoot(self, file_path=None):
         """Take the photo and save it to default_file_path"""
-        camera = picamera.PiCamera()
-        camera.resolution = self.resolution
-        # camera.led = self.led_status
-        camera.start_preview()
-        time.sleep(2)
-        camera.capture(file_path if file_path else self.default_file_path)
+        with picamera.PiCamera() as camera:
+            camera.resolution = self.resolution
+            # camera.led = self.led_status
+            camera.start_preview()
+            time.sleep(2)
+            camera.capture(file_path if file_path else self.default_file_path)
 
 
 if __name__ == '__main__':

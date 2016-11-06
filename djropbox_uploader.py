@@ -32,7 +32,7 @@ class DjropboxUploader:
         """
         Post the data to the endpoint
         """
-        url = 'http://{}{}'.format(self.host, normalise_endpoint(endpoint))
+        url = '{}{}'.format(self.host, normalise_endpoint(endpoint))
         headers = self.gen_headers()
 
         if is_json:

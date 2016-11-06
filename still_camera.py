@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # A simple class that takes a still image from the pi camera based on some
 # default settings
 import picamera
@@ -22,3 +23,8 @@ class StillCamera:
         camera.start_preview()
         time.sleep(2)
         camera.capture(file_path if file_path else self.default_file_path)
+
+
+if __name__ == '__main__':
+    still_camera = StillCamera()
+    still_camera.shoot()

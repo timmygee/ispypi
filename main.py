@@ -7,7 +7,7 @@ from djropbox_uploader import DjropboxUploader
 IMAGE_FILE_PATH = 'capture.jpg'
 
 detector = MotionDetector()
-camera = StillCamera(default_file_path=IMAGE_FILE_PATH)
+camera = StillCamera(default_file_path=IMAGE_FILE_PATH, resolution=(1296, 972))
 uploader = DjropboxUploader()
 
 print('Checking for motion...')

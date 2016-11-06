@@ -7,7 +7,7 @@ import time
 
 class StillCamera:
     led_status = True
-    resolution = (2592, 1944)
+    resolution = (2592, 1944)  # Max res for picamera 1
     default_file_path = 'still_image.jpg'
 
     def __init__(self, **kwargs):

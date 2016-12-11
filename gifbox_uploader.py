@@ -11,15 +11,15 @@ def normalise_endpoint(endpoint):
     return '/{}/'.format('/'.join([crumb for crumb in endpoint.split('/') if crumb]))
 
 
-class DjropboxUploader:
+class GifBoxUploader:
     def __init__(self, host=None, username=None, password=None):
         """
         Initialise the uploader defaults. If username, password and host aren't
         specified grab them from the os environment
         """
-        self.host = host if host else os.environ.get('DJROPBOX_HOST')
-        self.username = username if username else os.environ.get('DJROPBOX_USERNAME')
-        self.password = password if password else os.environ.get('DJROPBOX_PASSWORD')
+        self.host = host if host else os.environ.get('GIFBOX_HOST')
+        self.username = username if username else os.environ.get('GIFBOX_USERNAME')
+        self.password = password if password else os.environ.get('GIFBOX_PASSWORD')
         self.auth_token = None
 
     def gen_headers(self):
@@ -68,5 +68,5 @@ class DjropboxUploader:
 
 
 if __name__ == '__main__':
-    uploader = DjropboxUploader()
+    uploader = GifBoxUploader()
     uploader.upload('/some/file/path')

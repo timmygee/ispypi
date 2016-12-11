@@ -2,13 +2,13 @@
 
 from motion_detector import MotionDetector
 from still_camera import StillCamera
-from djropbox_uploader import DjropboxUploader
+from gifbox_uploader import GifBoxUploader
 
 IMAGE_FILE_PATH = 'capture.jpg'
 
 detector = MotionDetector()
 camera = StillCamera(default_file_path=IMAGE_FILE_PATH, resolution=(1296, 972))
-uploader = DjropboxUploader()
+uploader = GifBoxUploader()
 
 print('Checking for motion...')
 

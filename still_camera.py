@@ -9,9 +9,10 @@ class StillCamera:
     led_status = True
     resolution = (2592, 1944)  # Max res for picamera 1
     default_file_path = 'still_image.jpg'
+    rotation = 0
 
     def __init__(self, **kwargs):
-        for kwarg in ['led_status', 'resolution', 'default_file_path']:
+        for kwarg in ['led_status', 'resolution', 'default_file_path', 'rotation']:
             if kwarg in kwargs and kwargs[kwarg]:
                 setattr(self, kwarg, kwargs[kwarg])
 
@@ -19,6 +20,7 @@ class StillCamera:
         """Take the photo and save it to default_file_path"""
         with picamera.PiCamera() as camera:
             camera.resolution = self.resolution
+            camera.rotation = self.rotation
             # camera.led = self.led_status
             camera.start_preview()
             time.sleep(2)

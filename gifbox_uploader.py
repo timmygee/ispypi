@@ -2,6 +2,7 @@
 import os
 import requests
 import json
+import time
 
 
 def normalise_endpoint(endpoint):
@@ -12,6 +13,8 @@ def normalise_endpoint(endpoint):
 
 
 class GifBoxUploader:
+    max_retries = 20  # times retrying post if there is a ConnectionError
+
     def __init__(self, host=None, username=None, password=None):
         """
         Initialise the uploader defaults. If username, password and host aren't
@@ -41,7 +44,15 @@ class GifBoxUploader:
         else:
             post_data = data
 
-        return requests.post(url, data=post_data, headers=headers, **kwargs)
+        for retry_count in range(self.max_retries):
+            backoff_time = retry_count * 2
+            time.sleep(backoff_time)
+            try:
+                return requests.post(url, data=post_data, headers=headers, **kwargs)
+            except requests.exceptions.ConnectionError:
+                continue
+            except Exception as e:
+                raise e
 
     def authenticate(self):
         response = self.post('/obtain-auth-token/', data={

@@ -55,7 +55,7 @@ class GifBoxUploader:
                 raise e
 
     def authenticate(self):
-        response = self.post('/obtain-auth-token/', data={
+        response = self.post('/api/obtain-auth-token/', data={
             'username': self.username,
             'password': self.password,
         })

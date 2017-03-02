@@ -7,7 +7,7 @@ from gifbox_uploader import GifBoxUploader
 IMAGE_FILE_PATH = 'capture.jpg'
 
 detector = MotionDetector()
-camera = StillCamera(default_file_path=IMAGE_FILE_PATH, resolution=(1296, 972), rotation=180)
+camera = StillCamera(default_file_path=IMAGE_FILE_PATH, resolution=(640, 480), rotation=180)
 uploader = GifBoxUploader()
 
 print('Checking for motion...')
